@@ -1,0 +1,11 @@
+.search h1{
+    color: #1E90FF;
+}
+
+.search input{
+    width: 75%;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+ }
