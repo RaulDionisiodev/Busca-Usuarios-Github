@@ -1,7 +1,8 @@
 import React from "react";
 import './style.css';
-import Users from "../Users";
+import Users from "../../Pages/Users";
 import apiUsers from '../../Services/Api-Users';
+//import { Link } from "react-router-dom";
 
 class Search extends React.Component{
 
@@ -14,7 +15,14 @@ class Search extends React.Component{
     }
 
     state = {
-        user: [],
+        name:'',
+        bio: '',
+        img:'',
+        html_url: '',
+        repos:'',
+        followers:'',
+        following:''
+
     }
 
     handleChange(event) {
@@ -22,17 +30,21 @@ class Search extends React.Component{
     }
 
     handleSubmit(event) {
-        //alert('Um nome foi enviado: ' + this.state.value);
         event.preventDefault();
     }
 
     loadUsers = async () => {
         const response = await apiUsers.get(`/${this.state.value}`);
-         //console.log(response)
 
-        this.setState({user: response.data});
+         this.setState({name:response.data.name,
+                        bio:response.data.bio,
+                        img:response.data.avatar_url,
+                        repos:response.data.repos_url,
+                        followers:response.data.followers,
+                        following:response.data.following     
+                        })   
+         console.log(this.state);
 
-        console.log(this.state.user)
     }
 
     render(){
@@ -45,21 +57,11 @@ class Search extends React.Component{
                         placeholder="Insira seu usuario do Gitihub"  >
                     </input>
                     <button onClick={() =>this.loadUsers()}>Buscar</button>
-                    <Users name={this.state.user} />
+                    <Users name={this.state} />
                 </form>
             </div>
         );
     }
 }
-
-
-
-/*const Search = () => (
-    <div className="search">
-        
-        <input placeholder="Insira seu usuario do Gitihub" ></input>
-        <button>Enviar</button>
-    </div>
-);*/
 
 export default Search;

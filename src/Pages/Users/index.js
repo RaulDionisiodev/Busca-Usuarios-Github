@@ -12,7 +12,7 @@ export default class Users extends Component {
     render(){
       return ( 
         <div>
-            <h1></h1>
+            <h1>Página do Usuário</h1>
         </div>
       )}
 }  

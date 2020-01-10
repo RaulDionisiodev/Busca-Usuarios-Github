@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import octocat from './Octocat.png'
 import Search from './Components/Main';
-import Users from './Components/Users';
+import Routes from './Routes';
+
 
 
 
@@ -15,7 +16,7 @@ class App extends Component {
           <img src={octocat} alt="Mascote do github"></img>
         </div>
         <Search></Search>
-        <Users></Users>
+        <Routes></Routes>
       </div>
     );
   }
